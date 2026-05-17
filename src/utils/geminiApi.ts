@@ -1,4 +1,40 @@
-import type { AnalysisResult } from '../types';
+export interface AnalysisResult {
+  atsScore: number;
+  jobMatch: number;
+  matchedJobTitle: string;
+  grade: string;
+  gradeLabel: string;
+  gradeDescription: string;
+  keywords: {
+    present: string[];
+    missing: string[];
+  };
+  skills: {
+    yours: string[];
+    required: string[];
+  };
+  strengths: string[];
+  improvements: string[];
+  suggestions: string[];
+  atsChecks: {
+    fileFormat: string;
+    textReadability: string;
+    sectionDetection: string;
+    keywordExtraction: string;
+    formatting: string;
+  };
+  detailedFeedback: {
+    summary: string;
+    experienceAnalysis: string;
+    educationAnalysis: string;
+    skillsAnalysis: string;
+    formatAnalysis: string;
+  };
+  keywordAnalysis: {
+    presentKeywords: Array<{ keyword: string; frequency: number; importance: string }>;
+    missingKeywords: Array<{ keyword: string; importance: string; reason: string }>;
+  };
+}
 
 const GEMINI_PROMPT = (resumeText: string, jobDescription: string) => `
 You are an expert ATS resume analyzer and career coach. Analyze the following resume and return a comprehensive JSON analysis.
