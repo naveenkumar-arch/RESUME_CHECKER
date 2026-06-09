@@ -71,4 +71,4 @@ export default defineConfig([
   },
 ])
 ```
-this is end
+this is end buddy!
